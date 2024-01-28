@@ -7,9 +7,7 @@ router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   try {
-    const tagData = await Tag.findAll({
-      include: [ Product ]
-    });
+    const tagData = await Tag.findAll({include: [ Product ]});
     res.status(200).json(tagData);
   } catch (error) {
     res.status(500).json(error)
@@ -51,7 +49,7 @@ router.put('/:id', async (req, res) => {
       return;
     }
     Tag.update({tag_name: req.body.tag_name}, {where: {id:req.params.id}});
-    res.status(200).json();
+    res.status(200).json({message: 'success'});
   } catch (error) {
     res.status(500).json(error)
   }
