@@ -1,18 +1,35 @@
 const router = require('express').Router();
+const { json } = require('sequelize');
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // The `/api/products` endpoint
 
 // get all products
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
+  try {
+    const productData = await Product.findAll({include: [Category, Tag]});
+    res.status(200).json(productData);
+  } catch (error) {
+    res.status(500).json(error)
+  }
 });
 
 // get one product
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  try {
+    const productId = await Product.findByPk(req.params.id, {include: [Category, Tag]});
+    if (!productId) {
+      res.status(400).json ({message: 'No product related to this id'});
+      return;
+    }
+    res.status(200).json(productId);
+  } catch (error) {
+    res.status(500).json(error)
+  }
 });
 
 // create new product
@@ -25,6 +42,11 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
+ try {
+  
+ } catch (error) {
+  
+ }
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
