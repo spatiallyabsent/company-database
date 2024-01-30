@@ -20,7 +20,7 @@
 - download from https://github.com/spatiallyabsent/company-database
 
 ## Usage
-- run npm i in the terminal then log into and run mysql and source the database. After doing all that run the server and use a program that lets you test api's such as insomnia. Use get, put, post, and delete to view and alter the database.
+- run npm i in the terminal then log into and run mysql and source the database. After doing all that run the server and use a program that lets you test api's such as insomnia. Use get, put, post, and delete to view and alter the database. https://drive.google.com/file/d/1HkHAsKuQ8qcjHzIn2eaTB2wrr7a04Kfe/view 
 
 ## Tests
 - none
