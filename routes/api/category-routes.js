@@ -49,7 +49,7 @@ router.put('/:id', async (req, res) => {
     return;
   }
   Category.update(req.body, {where: {id:req.params.id}});
-  res.status(200).json(updateCategory);
+  res.status(200).json({message: 'success'});
   } catch (error) {
     res.status(400).json(error)
   }
